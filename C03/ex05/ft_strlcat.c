@@ -6,7 +6,7 @@
 /*   By: tkulivar <tkulivar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 11:51:01 by tkulivar          #+#    #+#             */
-/*   Updated: 2024/07/21 16:49:46 by tkulivar         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:09:39 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int	ft_strlen(char *str)
 	int	i;
 
 	i = 0;
-	while (*(str + i) != '\0')
+	while (str[i] != '\0')
 	{
 		i++;
 	}

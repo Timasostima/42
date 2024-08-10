@@ -6,22 +6,24 @@
 /*   By: tkulivar <tkulivar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 09:55:43 by tkulivar          #+#    #+#             */
-/*   Updated: 2024/07/23 13:42:17 by tkulivar         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:10:23 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	unsigned int	pos;
+	int	i;
+	int	temp;
 
-	pos = 0;
-	while ((s1[pos] != '\0' || s2[pos] != '\0') && pos < n)
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0' && i < n - 1)
 	{
-		if (s1[pos] != s2[pos])
-			return ((unsigned char)s1[pos] - (unsigned char)s2[pos]);
-		pos++;
+		temp = (unsigned char)s1[i] - (unsigned char)s2[i];
+		if (temp != 0)
+			return (temp);
+		i++;
 	}
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 // int	main(void)
@@ -30,6 +32,6 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 // 	char	*s2	= "ABC";
 // 	char	*s2_2	= "AB";	
 // 	char	*s2_3	= "ABZ";		
-// 	int res = ft_strncmp("ABC", "AB", 3);
+// 	int res = ft_strncmp("ABC", "AB", 2);
 // 	return (0);	
 // }

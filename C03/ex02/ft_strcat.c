@@ -6,7 +6,7 @@
 /*   By: tkulivar <tkulivar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 10:00:25 by tkulivar          #+#    #+#             */
-/*   Updated: 2024/07/21 16:09:28 by tkulivar         ###   ########.fr       */
+/*   Updated: 2024/07/18 16:41:04 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *src, char *dest)
 {
 	int	i;
 	int	des_len;

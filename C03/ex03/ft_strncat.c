@@ -6,7 +6,7 @@
 /*   By: tkulivar <tkulivar@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 12:04:03 by tkulivar          #+#    #+#             */
-/*   Updated: 2024/07/21 16:31:32 by tkulivar         ###   ########.fr       */
+/*   Updated: 2024/07/18 17:14:05 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
+char	*ft_strncat(char *src, char *dest, unsigned int nb)
 {
 	unsigned int	i;
 	int				des_len;
@@ -42,6 +42,6 @@ char	*ft_strncat(char *dest, char *src, unsigned int nb)
 // {
 // 	char	*src = "Hola";
 // 	char	dest[20] = "Tymur";
-// 	char *res = ft_strncat(dest, src, 3);
+// 	char *res = ft_strncat(src, dest, 3);
 // 	return (0);	
 // }

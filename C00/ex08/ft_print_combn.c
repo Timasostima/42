@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_combn.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkulivar <tkulivar@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: tkulivar <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 01:00:05 by tkulivar          #+#    #+#             */
-/*   Updated: 2024/07/25 09:40:32 by tkulivar         ###   ########.fr       */
+/*   Updated: 2024/07/10 12:14:21 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,4 @@ void	ft_print_arr(char *num_arr, int n)
 	}
 	if (num_arr[n - 1] != '9' - n + 1)
 		write(1, ", ", 2);
-}
-
-int	main(void)
-{
-	ft_print_combn(9);
 }
