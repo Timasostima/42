@@ -29,6 +29,32 @@ void	print_sol(int board[B_S])
 	write(1, "\n", 1);
 }
 
+//only to show the results. Btw,The board is rotated.
+/*
+void	print_sol2(int board[B_S])
+{
+    int		i;
+    int		j;
+
+    i = 0;
+    while (i < B_S)
+    {
+        j = 0;
+        while (j < B_S)
+        {
+            if (board[i] == j)
+                write(1, "Q ", 2);
+            else
+                write(1, ". ", 2);
+            j++;
+        }
+        write(1, "\n", 1);
+        i++;
+    }
+    write(1, "\n", 1);
+}
+*/
+
 int	safe_cell(int board[B_S], int col, int row)
 {
 	int	board_pos;
@@ -65,6 +91,7 @@ void	find_solution(int board[B_S], int col, int *sols)
 	{
 		*sols = *sols + 1;
 		print_sol(board);
+		//print_sol2(board);
 		return ;
 	}
 	while (row < B_S)
