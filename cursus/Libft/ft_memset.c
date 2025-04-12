@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-10 21:21:18 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-10 21:21:18 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-04-10 21:20:52 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-04-10 21:20:52 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+void	*ft_memset(void *s, int c, long unsigned int n)
 {
-	if ((c >= '0' && c <= '9'))
-		return (1);
-	return (0);
-}
+	long unsigned int	i;
 
-// int	main(void)
-// {
-//  	int a = ft_isdigit('a');
-// }
+	i = 0;
+	while (i < n)
+	{
+		*((char *)s + i) = (unsigned char)c;
+		i++;
+	}
+	return (s);
+}

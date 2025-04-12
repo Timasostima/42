@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-10-21 18:51:32 by tkulivar          #+#    #+#             */
-/*   Updated: 2024-10-21 18:51:32 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-04-10 21:21:47 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-04-10 21:21:47 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@ int	ft_strlen(char *str)
 	int	len;
 
 	len = 0;
-	while (*str)
+	while (str[len])
 	{
 		len++;
-		str++;
 	}
+	return (len);
 }
 
 // int	main(void)
