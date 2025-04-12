@@ -4,6 +4,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
+MKDIR = mkdir -p
 
 FILES = isalpha \
 		isdigit \
@@ -19,7 +20,14 @@ FILES = isalpha \
 		tolower \
 		strchr \
 		strrchr \
-		strncmp
+		strncmp \
+		memchr \
+		memcmp \
+		strnstr \
+		atoi \
+		putchar_fd \
+		putstr_fd \
+		putendl_fd \
 
 SRCS = $(addprefix ./ft_, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix ./ft_, $(addsuffix .o, $(FILES)))
@@ -28,7 +36,7 @@ OBJS = $(addprefix ./ft_, $(addsuffix .o, $(FILES)))
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^ # the same as $(AR) $(NAME) $(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
 all: $(NAME)
 

@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *in_dest, const void *in_src, long unsigned int n)
+void	*ft_memcpy(void *dest, const void *src, long unsigned int n)
 {
 	long unsigned int	i;
-	char				*dest;
-	const char			*src;
+	char				*cast_dest;
+	const char			*cast_src;
 
-	if (!in_dest && !in_src)
+	if (!dest && !src)
 		return ('\0');
-	dest = (char *)in_dest;
-	src = (const char *)in_src;
+	cast_dest = (char *) dest;
+	cast_src = (const char *) src;
 	i = 0;
 	while (i < n)
 	{
-		dest[i] = src[i];
+		cast_dest[i] = cast_src[i];
 		i++;
 	}
-	return (in_dest);
+	return (dest);
 }

@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-11 07:08:33 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-11 07:08:33 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-04-12 11:29:02 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-04-12 11:29:02 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
-{
-	char	*last;
-	int		i;
+#include <unistd.h>
 
-	i = 0;
-	last = '\0';
-	while (s[i])
-	{
-		if (s[i] == (char) c)
-			last = (char *)(s + i);
-		i++;
-	}
-	if (s[i] == (char)c)
-		last = (char *)(s + i);
-	return (last);
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
 }

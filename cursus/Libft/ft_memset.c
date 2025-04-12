@@ -13,11 +13,13 @@
 void	*ft_memset(void *s, int c, long unsigned int n)
 {
 	long unsigned int	i;
+	unsigned char		*cast_s;
 
+	cast_s = (unsigned char *) s;
 	i = 0;
 	while (i < n)
 	{
-		*((char *)s + i) = (unsigned char)c;
+		cast_s[i] = (unsigned char)c;
 		i++;
 	}
 	return (s);

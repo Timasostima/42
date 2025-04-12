@@ -14,7 +14,7 @@
 
 void	*ft_memmove(void *dest, const void *src, long unsigned int n)
 {
-	char	temp[n];
+	char	temp[n]; // esta mal, me gustaria hacer malloc, pero parece que no se puede
 	long unsigned int i;
 
 	if (!dest && !src)

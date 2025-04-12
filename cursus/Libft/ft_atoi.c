@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-11 07:08:33 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-11 07:08:33 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-04-12 10:52:52 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-04-12 10:52:52 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
+#include "libft.h"
+
+int	ft_atoi(const char *nptr)
 {
-	char	*last;
-	int		i;
+	int	i;
+	int	res;
+	int	flag;
 
 	i = 0;
-	last = '\0';
-	while (s[i])
+	while (nptr[i] == '\t' || nptr[i] == '\n' || nptr[i] == '\r' || 
+		nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == ' ')
+		i++;
+	flag = 1;
+	if (nptr[i] == '-')
+		flag *= -1;
+	if (nptr[i] == '+' || nptr[i] == '-')
+		i++;
+	res = 0;
+	while (ft_isdigit(nptr[i]))
 	{
-		if (s[i] == (char) c)
-			last = (char *)(s + i);
+		res = res * 10 + nptr[i] - '0';
 		i++;
 	}
-	if (s[i] == (char)c)
-		last = (char *)(s + i);
-	return (last);
+	return (res * flag);
 }

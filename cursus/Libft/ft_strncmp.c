@@ -12,16 +12,20 @@
 
 int	ft_strncmp(const char *s1, const char *s2, long unsigned int n)
 {
-    long unsigned int	i;
+	long unsigned int	i;
+	unsigned char		*cast_s1;
+	unsigned char		*cast_s2;
 
-    if (n == 0)
-        return (0);
-    i = 0;
-    while (i + 1 < n && s1[i] && s2[i])
-    {
-        if ((unsigned char)s1[i] != (unsigned char)s2[i])
-            return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-        i++;
-    }
-    return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	cast_s1 = (unsigned char *)s1;
+	cast_s2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (i + 1 < n && cast_s1[i] && cast_s2[i])
+	{
+		if (cast_s1[i] != cast_s2[i])
+			return (cast_s1[i] - cast_s2[i]);
+		i++;
+	}
+	return (cast_s1[i] - cast_s2[i]);
 }

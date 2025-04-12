@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-11 07:08:33 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-11 07:08:33 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-04-11 19:21:58 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-04-11 19:21:58 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(const char *s, int c)
+int	ft_memcmp(const void *s1, const void *s2, long unsigned int n)
 {
-	char	*last;
-	int		i;
+	long unsigned int	i;
+	unsigned char		*cast_s1;
+	unsigned char		*cast_s2;
 
+	if (n == 0)
+        return (0);
+	cast_s1 = (unsigned char *) s1;
+	cast_s2 = (unsigned char *) s2;
 	i = 0;
-	last = '\0';
-	while (s[i])
+	while (i + 1 < n)
 	{
-		if (s[i] == (char) c)
-			last = (char *)(s + i);
+		if (cast_s1[i] != cast_s2[i])
+			return (cast_s1[i] - cast_s2[i]);
 		i++;
 	}
-	if (s[i] == (char)c)
-		last = (char *)(s + i);
-	return (last);
+	return (cast_s1[i] - cast_s2[i]);
 }
