@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, long unsigned int n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	temp[n]; // esta mal, me gustaria hacer malloc, pero parece que no se puede
-	long unsigned int i;
+	size_t i;
 
 	if (!dest && !src)
 		return ('\0');

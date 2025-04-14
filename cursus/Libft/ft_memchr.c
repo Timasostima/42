@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memchr(const void *s, int c, long unsigned int n)
+#include "libft.h"
+
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	long unsigned int	i;
+	size_t	i;
 	unsigned char		*cast_s;
 
 	i = 0;

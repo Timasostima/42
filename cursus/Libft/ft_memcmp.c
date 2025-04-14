@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_memcmp(const void *s1, const void *s2, long unsigned int n)
+#include "libft.h"
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	long unsigned int	i;
+	size_t	i;
 	unsigned char		*cast_s1;
 	unsigned char		*cast_s2;
 

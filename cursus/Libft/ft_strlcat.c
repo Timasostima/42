@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   no_ft_strlcat.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-11 07:52:11 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-11 07:52:11 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-04-14 17:08:18 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-04-14 17:08:18 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
-	unsigned char		*cast_s1;
-	unsigned char		*cast_s2;
+	size_t	chrs_to_copy;
+	size_t	dst_size;		
 
-	cast_s1 = (unsigned char *)s1;
-	cast_s2 = (unsigned char *)s2;
-	if (n == 0)
-		return (0);
+	dst_size = ft_strlen(dst);
+	if (size < dst_size)
+		return ft_strlen((char *)src) + size;
+	chrs_to_copy = size - dst_size - 1;
 	i = 0;
-	while (i + 1 < n && cast_s1[i] && cast_s2[i])
+	while(i < chrs_to_copy && src[i])
 	{
-		if (cast_s1[i] != cast_s2[i])
-			return (cast_s1[i] - cast_s2[i]);
+		dst[dst_size + i] = src[i];
 		i++;
 	}
-	return (cast_s1[i] - cast_s2[i]);
+	dst[dst_size + i] = '\0';
+	return dst_size + ft_strlen((char *)src);
 }
+
+// int main(void){
+// 	ft_strlcat("rrrrrrrrrrrrrrrr", "lorem ipsum dolor sit amet", 5);
+// }

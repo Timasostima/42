@@ -12,10 +12,10 @@
 
 #include "libft.h"
 
-int	starts_with(const char *big, const char *little, long unsigned int start_index)
+int	starts_with(const char *big, const char *little, size_t start_index)
 {
-	long unsigned int	i;
-	long unsigned int	needed_length;
+	size_t	i;
+	size_t	needed_length;
 
 	i = 0;
 	needed_length = ft_strlen((char*) little);
@@ -28,10 +28,10 @@ int	starts_with(const char *big, const char *little, long unsigned int start_ind
 	return 0;
 }
 
-char	*ft_strnstr(const char *big, const char *little, long unsigned int len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	long unsigned int	i;
-	long unsigned int	needed_length;
+	size_t	i;
+	size_t	needed_length;
 
 	if (!*little)
 		return (char *) big;

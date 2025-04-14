@@ -1,23 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-10 21:21:24 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-10 21:21:24 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-04-12 17:00:26 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-04-12 17:00:26 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int c)
+void ft_putnbr_fd(int n, int fd)
 {
-	return (c >= 0 && c <= 127);
+	int		closest_ten;
+	char	current_digit;
+
+	closest_ten = 1;
+	if (n == -2147483648){
+		ft_putstr_fd("-2147483648", fd);
+		return;
+	}
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
+	}
+	while (n / closest_ten >= 10)
+	{
+		closest_ten *= 10;
+	}
+	while (closest_ten >= 1)
+	{
+		current_digit = n / closest_ten % 10 + '0';
+		closest_ten /= 10;
+
+		ft_putchar_fd(current_digit, fd);
+	}
 }
 
 // int	main(void)
 // {
-//  	int a = ft_isascii('a');
+// 	ft_putnbr_fd(532, 1);
 // }
