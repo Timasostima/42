@@ -12,15 +12,16 @@
 
 #include "libft.h"
 
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	int		closest_ten;
 	char	current_digit;
 
 	closest_ten = 1;
-	if (n == -2147483648){
+	if (n == -2147483648)
+	{
 		ft_putstr_fd("-2147483648", fd);
-		return;
+		return ;
 	}
 	if (n < 0)
 	{
@@ -35,7 +36,6 @@ void ft_putnbr_fd(int n, int fd)
 	{
 		current_digit = n / closest_ten % 10 + '0';
 		closest_ten /= 10;
-
 		ft_putchar_fd(current_digit, fd);
 	}
 }
