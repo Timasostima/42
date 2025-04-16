@@ -33,6 +33,8 @@ FILES = isalpha \
 		strtrim \
 		split \
 		itoa \
+		strmapi \
+		striteri \
 		putchar_fd \
 		putstr_fd \
 		putendl_fd \
