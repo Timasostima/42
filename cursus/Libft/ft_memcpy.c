@@ -19,7 +19,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	const char	*cast_src;
 
 	if (!dest && !src)
-		return ('\0');
+		return (NULL);
 	cast_dest = (char *)dest;
 	cast_src = (const char *)src;
 	i = 0;

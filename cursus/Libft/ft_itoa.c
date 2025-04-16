@@ -26,7 +26,7 @@ int	find_length(unsigned int n, int flag)
 	}
 	if (flag == -1)
 		i++;
-	return i;
+	return (i);
 }
 
 char	*ft_itoa(int n)
@@ -37,9 +37,10 @@ char	*ft_itoa(int n)
 	int		i;
 
 	if (n == -2147483648)
-		return ft_strdup("-2147483648");
+		return (ft_strdup("-2147483648"));
 	flag = 1;
-	if (n < 0){
+	if (n < 0)
+	{
 		flag *= -1;
 		n *= -1;
 	}
@@ -54,7 +55,7 @@ char	*ft_itoa(int n)
 	}
 	if (flag == -1)
 		res[0] = '-';
-	return res;
+	return (res);
 }
 
 // int main(void)

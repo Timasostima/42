@@ -25,7 +25,7 @@ char	*ft_strjoin(const char*s1, const char *s2)
 		return (NULL);
 	ft_strlcpy(res, s1, size_s1 + 1);
 	ft_strlcpy(&res[size_s1], s2, size_s2 + 1);
-	return res;
+	return (res);
 }
 
 // int	main(int)

@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C: gcc-13 build active file",
+            "label": "tymbuild",
             "command": "/usr/bin/gcc-13",
             "dependsOn": [
                 "make make"
