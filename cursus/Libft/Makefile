@@ -26,7 +26,13 @@ FILES = isalpha \
 		memcmp \
 		strnstr \
 		atoi \
+		calloc \
+		strdup \
 		substr \
+		strjoin \
+		strtrim \
+		split \
+		itoa \
 		putchar_fd \
 		putstr_fd \
 		putendl_fd \

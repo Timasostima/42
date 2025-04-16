@@ -14,22 +14,35 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t		i;
+	size_t	s_len;
+	size_t	sub_len;
+	size_t	i;
 	char	*substr;
 
-	substr = (char *)malloc(sizeof(char const *) * len + 1);
-	if (substr == NULL)
+	if (!s)
+		return NULL;
+
+	s_len = ft_strlen(s);
+	if (start >= s_len)
+		return ft_strdup("");
+	sub_len = s_len - start;
+	if (sub_len > len)
+		sub_len = len;
+	substr = malloc(sub_len + 1);
+	if (!substr)
 		return NULL;
 	i = 0;
-	while (i < len && s[start + i])
+	while (i < sub_len)
 	{
 		substr[i] = s[start + i];
 		i++;
 	}
+	substr[i] = '\0';
 	return substr;
 }
 
 // int main(void)
 // {
-// 	ft_substr("hola", 0, 18446744073709551615);
+// 	ft_substr("hola", 0, 11-6);
+
 // }
