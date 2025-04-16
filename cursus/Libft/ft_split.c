@@ -15,19 +15,15 @@
 static int	ft_count_segments(char *s, char c)
 {
 	int	i;
-	int	first;
 	int	segments;
 
 	i = 0;
-	first = 1;
-	segments = 1;
-	while (s[i] == c && s[i])
+	segments = 0;
+	while (s[i] && s[i] == c)
 		i++;
 	while (s[i])
 	{
-		if (first && s[i] != c && (i == 0 || s[i - 1] == c))
-			first = 0;
-		else if (s[i] != c && s[i - 1] == c)
+		if (s[i] != c && (i == 0 || s[i - 1] == c))
 			segments += 1;
 		i++;
 	}
@@ -60,7 +56,7 @@ static char	*ft_next_substr(char const *s, char c, int seg_i)
 	{
 		if (seg_i == 0 && s[i] != c)
 			return (ft_get_substr(s, c, i));
-		else if (first && s[i] != c && (i == 0 || s[i - 1] == c))
+		else if (first != 0 && s[i] != c && (i == 0 || s[i - 1] == c))
 			first = 0;
 		else if (s[i] != c && s[i - 1] == c)
 		{
@@ -76,15 +72,16 @@ static char	*ft_next_substr(char const *s, char c, int seg_i)
 static void	ft_free_split(char **split_arr)
 {
 	int	i;
-	
+
 	i = 0;
-	if (!split_arr)
-		return ;
 	while (split_arr[i])
-		i++;
-	while (split_arr[--i])
+	{
 		free(split_arr[i]);
+		split_arr[i] = NULL;
+		i++;
+	}
 	free(split_arr);
+	split_arr = NULL;
 }
 
 char	**ft_split(char const *s, char c)
@@ -95,8 +92,8 @@ char	**ft_split(char const *s, char c)
 	int		i;
 
 	segments = ft_count_segments((char *)s, c);
-	res = (char **)malloc((segments + 1) * sizeof(char *));
-	if (!res || !s)
+	res = ft_calloc(segments + 1, sizeof(char *));
+	if (!res)
 		return (NULL);
 	i = 0;
 	while (i < segments)
@@ -110,11 +107,17 @@ char	**ft_split(char const *s, char c)
 		res[i] = segment;
 		i++;
 	}
-	res[i] = NULL;
 	return (res);
 }
 
 // int	main(void)
 // {
-// 	ft_split("Hello!", ' ');
+// 	// ft_split("Hello World", ' ');
+// 	ft_split("   lorem   ipsum dolor     sit amet, consectetur   
+//adipiscing elit. Sed non risus. Suspendisse   ", ' ');
+// 	// ft_split("lorem ipsum dolor sit amet, 
+//consectetur adipiscing elit. Sed 
+// 	// non risus. Suspendisse", ' ');
+// 	// ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
+// 	// ft_split("Hello!", ' ');
 // }
