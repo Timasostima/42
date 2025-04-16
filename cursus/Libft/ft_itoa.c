@@ -29,23 +29,16 @@ int	find_length(unsigned int n, int flag)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char	*transform_itoa(int n, int flag)
 {
-	int		flag;
+	int		i;
 	int		need_l;
 	char	*res;
-	int		i;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	flag = 1;
-	if (n < 0)
-	{
-		flag *= -1;
-		n *= -1;
-	}
 	need_l = find_length((unsigned int)n, flag);
 	res = (char *)ft_calloc(need_l, sizeof(char));
+	if (!res)
+		return (NULL);
 	i = need_l - 2;
 	while (i >= 0)
 	{
@@ -55,6 +48,25 @@ char	*ft_itoa(int n)
 	}
 	if (flag == -1)
 		res[0] = '-';
+	return (res);
+}
+
+char	*ft_itoa(int n)
+{
+	int		flag;
+	char	*res;
+
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	flag = 1;
+	if (n < 0)
+	{
+		flag *= -1;
+		n *= -1;
+	}
+	res = transform_itoa(n, flag);
+	if (!res)
+		return (NULL);
 	return (res);
 }
 

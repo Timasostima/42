@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	count_segments(char *s, char c)
+static int	ft_count_segments(char *s, char c)
 {
 	int	i;
 	int	first;
@@ -34,7 +34,7 @@ int	count_segments(char *s, char c)
 	return (segments);
 }
 
-char	*get_substr(const char *s, char c, int start)
+static char	*ft_get_substr(char const *s, char c, int start)
 {
 	int		end;
 	char	*substr;
@@ -42,12 +42,12 @@ char	*get_substr(const char *s, char c, int start)
 	end = start;
 	while (s[end] && s[end] != c)
 		end++;
-	substr = ft_substr((const char *)s,
+	substr = ft_substr((char const *)s,
 			(unsigned int)start, (size_t)(end - start));
 	return (substr);
 }
 
-char	*next_substr(const char *s, char c, int seg_i)
+static char	*ft_next_substr(char const *s, char c, int seg_i)
 {
 	int		i;
 	int		cur_seg;
@@ -59,18 +59,32 @@ char	*next_substr(const char *s, char c, int seg_i)
 	while (s[i])
 	{
 		if (seg_i == 0 && s[i] != c)
-			return (get_substr(s, c, i));
+			return (ft_get_substr(s, c, i));
 		else if (first && s[i] != c && (i == 0 || s[i - 1] == c))
 			first = 0;
 		else if (s[i] != c && s[i - 1] == c)
 		{
 			cur_seg += 1;
 			if (cur_seg == seg_i)
-				return (get_substr(s, c, i));
+				return (ft_get_substr(s, c, i));
 		}
 		i++;
 	}
 	return (NULL);
+}
+
+static void	ft_free_split(char **split_arr)
+{
+	int	i;
+	
+	i = 0;
+	if (!split_arr)
+		return ;
+	while (split_arr[i])
+		i++;
+	while (split_arr[--i])
+		free(split_arr[i]);
+	free(split_arr);
 }
 
 char	**ft_split(char const *s, char c)
@@ -80,12 +94,19 @@ char	**ft_split(char const *s, char c)
 	int		segments;
 	int		i;
 
-	segments = count_segments((char *)s, c);
-	res = (char **)malloc(segments * sizeof(char *) + 1);
+	segments = ft_count_segments((char *)s, c);
+	res = (char **)malloc((segments + 1) * sizeof(char *));
+	if (!res || !s)
+		return (NULL);
 	i = 0;
 	while (i < segments)
 	{
-		segment = next_substr(s, c, i);
+		segment = ft_next_substr(s, c, i);
+		if (segment == NULL)
+		{
+			ft_free_split(res);
+			return (NULL);
+		}
 		res[i] = segment;
 		i++;
 	}
@@ -95,11 +116,5 @@ char	**ft_split(char const *s, char c)
 
 // int	main(void)
 // {
-// 	// ft_split("Hello World", ' ');
-// 	// ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing 
-// elit. Sed non risus. Suspendisse   ", ' ');
-// 	// ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed 
-// non risus. Suspendisse", ' ');
-// 	// ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
-// 	ft_split("Hello!", '^');
+// 	ft_split("Hello!", ' ');
 // }
