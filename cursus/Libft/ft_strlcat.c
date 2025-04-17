@@ -31,7 +31,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[dst_size + i] = '\0';
 	return (dst_size + ft_strlen((char *)src));
 }
-
-// int main(void){
-// 	ft_strlcat("rrrrrrrrrrrrrrrr", "lorem ipsum dolor sit amet", 5);
-// }

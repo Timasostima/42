@@ -20,7 +20,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	i = 0;
 	cast_s = (unsigned char *)s;
 	if (n == 0)
-		return ('\0');
+		return (NULL);
 	while (i + 1 < n)
 	{
 		if (cast_s[i] == (unsigned char) c)
@@ -29,5 +29,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	if (cast_s[i] == (unsigned char) c)
 		return ((void *)(s + i));
-	return ('\0');
+	return (NULL);
 }

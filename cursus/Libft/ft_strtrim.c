@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_contains(char const *set, char const to_find)
+static int	ft_contains(char const *set, char const to_find)
 {
 	int	i;
 
@@ -34,16 +34,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 	start = 0;
 	end = ft_strlen(s1) - 1;
-	while (s1[start] && start < ft_strlen(s1) && ft_contains(set, s1[start]))
+	while (s1[start] && start < (int)ft_strlen(s1)
+		&& ft_contains(set, s1[start]))
 		start++;
 	while (s1[end] && end > 0 && ft_contains(set, s1[end]))
 		end--;
 	res = ft_substr(s1, start, end - start + 1);
 	return (res);
 }
-
-// int	main(int)
-// {
-// 	char* a = ft_strtrim("abaHello Worldbbb", "ab");
-// 	return 1;
-// }

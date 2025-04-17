@@ -20,8 +20,3 @@ int	ft_isalnum(int c)
 		return (1);
 	return (0);
 }
-
-// int	main(void)
-// {
-//  	int a = ft_isalnum('a');
-// }

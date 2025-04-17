@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int	len;
 
@@ -23,8 +23,3 @@ int	ft_strlen(const char *s)
 	}
 	return (len);
 }
-
-// int	main(void)
-// {
-// 	int a = ft_strlen("lalala");
-// }

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	find_length(unsigned int n, int flag)
+static int	ft_find_length(unsigned int n, int flag)
 {
 	int	i;
 
@@ -29,13 +29,13 @@ int	find_length(unsigned int n, int flag)
 	return (i);
 }
 
-char	*transform_itoa(int n, int flag)
+static char	*ft_transform_itoa(int n, int flag)
 {
 	int		i;
 	int		need_l;
 	char	*res;
 
-	need_l = find_length((unsigned int)n, flag);
+	need_l = ft_find_length((unsigned int)n, flag);
 	res = (char *)ft_calloc(need_l, sizeof(char));
 	if (!res)
 		return (NULL);
@@ -64,15 +64,8 @@ char	*ft_itoa(int n)
 		flag *= -1;
 		n *= -1;
 	}
-	res = transform_itoa(n, flag);
+	res = ft_transform_itoa(n, flag);
 	if (!res)
 		return (NULL);
 	return (res);
 }
-
-// int main(void)
-// {
-// 	char* a;
-// 	a = ft_itoa(0);
-// 	return ft_strlen(a);
-// }

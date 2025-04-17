@@ -109,15 +109,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (res);
 }
-
-// int	main(void)
-// {
-// 	// ft_split("Hello World", ' ');
-// 	ft_split("   lorem   ipsum dolor     sit amet, consectetur   
-//adipiscing elit. Sed non risus. Suspendisse   ", ' ');
-// 	// ft_split("lorem ipsum dolor sit amet, 
-//consectetur adipiscing elit. Sed 
-// 	// non risus. Suspendisse", ' ');
-// 	// ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
-// 	// ft_split("Hello!", ' ');
-// }

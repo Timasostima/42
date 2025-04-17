@@ -12,14 +12,14 @@
 
 #include "libft.h"
 
-int	starts_with(const char *big, const char *little, size_t start_index)
+static int	ft_starts_with(const char *big, const char *lit, size_t start_index)
 {
 	size_t	i;
 	size_t	needed_length;
 
 	i = 0;
-	needed_length = ft_strlen((char *)little);
-	while (little[i] == big[start_index + i])
+	needed_length = ft_strlen((char *)lit);
+	while (lit[i] == big[start_index + i])
 	{
 		i++;
 		if (i == needed_length)
@@ -36,14 +36,14 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	if (!*little)
 		return ((char *)big);
 	if (len < 1)
-		return ('\0');
+		return (NULL);
 	i = 0;
 	needed_length = ft_strlen((char *)little);
 	while (big[i] && i + needed_length <= len)
 	{
-		if (starts_with(big, little, i) == 1)
+		if (ft_starts_with(big, little, i) == 1)
 			return ((char *)(big + i));
 		i++;
 	}
-	return ('\0');
+	return (NULL);
 }

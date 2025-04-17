@@ -39,8 +39,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd(current_digit, fd);
 	}
 }
-
-// int	main(void)
-// {
-// 	ft_putnbr_fd(532, 1);
-// }
