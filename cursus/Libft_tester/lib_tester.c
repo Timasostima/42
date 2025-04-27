@@ -125,43 +125,128 @@ int main(void) {
     printf("ft_strlen: \t%s\n", check_all(results15, sizeof(results15) / sizeof(results15[0])));
 
     char buf1[20], buf2[20];
+    int memset_results[] = {
+        // Basic functionality test
+        ({ char buf1[10] = {0}; char buf2[10] = {0}; 
+        ft_memset(buf1, 'A', 5) == buf1 && memset(buf2, 'A', 5) == buf2 && 
+        memcmp(buf1, buf2, 10) == 0; }),
+        
+        // Test with zero length
+        ({ char buf1[10] = {0}; char buf2[10] = {0}; 
+        ft_memset(buf1, 'A', 0) == buf1 && memset(buf2, 'A', 0) == buf2 && 
+        memcmp(buf1, buf2, 10) == 0; }),
+        
+        // Test with full buffer
+        ({ char buf1[10] = {0}; char buf2[10] = {0}; 
+        ft_memset(buf1, 'B', 10) == buf1 && memset(buf2, 'B', 10) == buf2 && 
+        memcmp(buf1, buf2, 10) == 0; }),
+        
+        // Test with non-ASCII value
+        ({ char buf1[10] = {0}; char buf2[10] = {0}; 
+        ft_memset(buf1, 128, 5) == buf1 && memset(buf2, 128, 5) == buf2 && 
+        memcmp(buf1, buf2, 10) == 0; })
+    };
+    printf("ft_memset: \t%s\n", check_all(memset_results, sizeof(memset_results) / sizeof(memset_results[0])));
+
+    int bzero_results[] = {
+        ({ char buf1[10] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'}; 
+        char buf2[10] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+        ft_bzero(buf1, 5); bzero(buf2, 5);
+        memcmp(buf1, buf2, 10) == 0; }),
+        
+        ({ char buf1[10] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'}; 
+        char buf2[10] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+        ft_bzero(buf1, 0); bzero(buf2, 0);
+        memcmp(buf1, buf2, 10) == 0; }),
+        
+        ({ char buf1[10] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'}; 
+        char buf2[10] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+        ft_bzero(buf1, 10); bzero(buf2, 10);
+        memcmp(buf1, buf2, 10) == 0; })
+    };
+    printf("ft_bzero: \t%s\n", check_all(bzero_results, sizeof(bzero_results) / sizeof(bzero_results[0])));
+
+    int memcpy_results[] = {
+        ({ char src[10] = "abcdefghi"; char dest1[10] = {0}; char dest2[10] = {0}; 
+        ft_memcpy(dest1, src, 5) == dest1 && memcpy(dest2, src, 5) == dest2 && 
+        memcmp(dest1, dest2, 10) == 0; }),
+        
+        ({ char src[10] = "abcdefghi"; char dest1[10] = {0}; char dest2[10] = {0}; 
+        ft_memcpy(dest1, src, 0) == dest1 && memcpy(dest2, src, 0) == dest2 && 
+        memcmp(dest1, dest2, 10) == 0; }),
+        
+        ({ char src[10] = "abcdefghi"; char dest1[10] = {0}; char dest2[10] = {0}; 
+        ft_memcpy(dest1, src, 10) == dest1 && memcpy(dest2, src, 10) == dest2 && 
+        memcmp(dest1, dest2, 10) == 0; }),
+
+        ({ unsigned char src[10] = {128, 129, 130, 131, 132, 133, 134, 135, 136, 137}; 
+        unsigned char dest1[10] = {0}; unsigned char dest2[10] = {0}; 
+        ft_memcpy(dest1, src, 10) == dest1 && memcpy(dest2, src, 10) == dest2 && 
+        memcmp(dest1, dest2, 10) == 0; })
+    };
+    printf("ft_memcpy: \t%s\n", check_all(memcpy_results, sizeof(memcpy_results) / sizeof(memcpy_results[0])));
+
+    int memmove_results[] = {
+        ({ char src[10] = "abcdefghi"; char dest1[10] = {0}; char dest2[10] = {0}; 
+        ft_memmove(dest1, src, 5) == dest1 && memmove(dest2, src, 5) == dest2 && 
+        memcmp(dest1, dest2, 10) == 0; }),
+        
+        ({ char src[10] = "abcdefghi"; char dest1[10] = {0}; char dest2[10] = {0}; 
+        ft_memmove(dest1, src, 0) == dest1 && memmove(dest2, src, 0) == dest2 && 
+        memcmp(dest1, dest2, 10) == 0; }),
+        
+        ({ char src[10] = "abcdefghi"; char dest1[10] = {0}; char dest2[10] = {0}; 
+        ft_memmove(dest1, src, 10) == dest1 && memmove(dest2, src, 10) == dest2 && 
+        memcmp(dest1, dest2, 10) == 0; }),
+
+        ({ char buf1[20] = "abcdefghijklmnopqrs"; char buf2[20] = "abcdefghijklmnopqrs"; 
+        ft_memmove(buf1, buf1 + 5, 10); memmove(buf2, buf2 + 5, 10); 
+        memcmp(buf1, buf2, 20) == 0; }),
+
+        ({ char buf1[20] = "abcdefghijklmnopqrs"; char buf2[20] = "abcdefghijklmnopqrs"; 
+        ft_memmove(buf1 + 5, buf1, 10); memmove(buf2 + 5, buf2, 10); 
+        memcmp(buf1, buf2, 20) == 0; })
+    };
+    printf("ft_memmove: \t%s\n", check_all(memmove_results, sizeof(memmove_results) / sizeof(memmove_results[0])));
+
+    char buf3[20], buf4[20];
     int results16[] = {
-        ({ memset(buf1, 0, sizeof(buf1)); memset(buf2, 0, sizeof(buf2)); 
-           ft_strlcpy(buf1, "lorem ipsum dolor sit amet", 5) == strlcpy(buf2, "lorem ipsum dolor sit amet", 5) &&
-           memcmp(buf1, buf2, 5) == 0; 
+        ({ memset(buf3, 0, sizeof(buf3)); memset(buf4, 0, sizeof(buf4)); 
+           ft_strlcpy(buf3, "lorem ipsum dolor sit amet", 5) == strlcpy(buf4, "lorem ipsum dolor sit amet", 5) &&
+           memcmp(buf3, buf4, 5) == 0; 
         }),
-        ({ memset(buf1, 0, sizeof(buf1)); memset(buf2, 0, sizeof(buf2)); 
-           ft_strlcpy(buf1, "lorem ipsum dolor sit amet", sizeof(buf1)) == strlcpy(buf2, "lorem ipsum dolor sit amet", sizeof(buf2)) &&
-           strcmp(buf1, buf2) == 0; 
+        ({ memset(buf3, 0, sizeof(buf3)); memset(buf4, 0, sizeof(buf4)); 
+           ft_strlcpy(buf3, "lorem ipsum dolor sit amet", sizeof(buf3)) == strlcpy(buf4, "lorem ipsum dolor sit amet", sizeof(buf4)) &&
+           strcmp(buf3, buf4) == 0; 
         }),
-        ({ memset(buf1, 0, sizeof(buf1)); memset(buf2, 0, sizeof(buf2)); 
-           ft_strlcpy(buf1, "short", 3) == strlcpy(buf2, "short", 3) &&
-           memcmp(buf1, buf2, 3) == 0; 
+        ({ memset(buf3, 0, sizeof(buf3)); memset(buf4, 0, sizeof(buf4)); 
+           ft_strlcpy(buf3, "short", 3) == strlcpy(buf4, "short", 3) &&
+           memcmp(buf3, buf4, 3) == 0; 
         }),
-        ({ memset(buf1, 0, sizeof(buf1)); memset(buf2, 0, sizeof(buf2)); 
-           ft_strlcpy(buf1, "", sizeof(buf1)) == strlcpy(buf2, "", sizeof(buf2)) &&
-           strcmp(buf1, buf2) == 0; 
+        ({ memset(buf3, 0, sizeof(buf3)); memset(buf4, 0, sizeof(buf4)); 
+           ft_strlcpy(buf3, "", sizeof(buf3)) == strlcpy(buf4, "", sizeof(buf4)) &&
+           strcmp(buf3, buf4) == 0; 
         })
     };
     printf("ft_strlcpy: \t%s\n", check_all(results16, sizeof(results16) / sizeof(results16[0])));
 
     int results17[] = {
-        ({ strcpy(buf1, "rrrrr"); strcpy(buf2, "rrrrr"); 
-           ft_strlcat(buf1, "lorem ipsum", 12) == strlcat(buf2, "lorem ipsum", 12) &&
-           strcmp(buf1, buf2) == 0; 
+        ({ strcpy(buf3, "rrrrr"); strcpy(buf4, "rrrrr"); 
+           ft_strlcat(buf3, "lorem ipsum", 12) == strlcat(buf4, "lorem ipsum", 12) &&
+           strcmp(buf3, buf4) == 0; 
         }),
-        ({ strcpy(buf1, "a"); strcpy(buf2, "a"); 
-           ft_strlcat(buf1, "lorem", sizeof(buf1)) == strlcat(buf2, "lorem", sizeof(buf2)) &&
-           strcmp(buf1, buf2) == 0; 
+        ({ strcpy(buf3, "a"); strcpy(buf4, "a"); 
+           ft_strlcat(buf3, "lorem", sizeof(buf3)) == strlcat(buf4, "lorem", sizeof(buf4)) &&
+           strcmp(buf3, buf4) == 0; 
         }),
 
-        ({ strcpy(buf1, "test"); strcpy(buf2, "test"); 
-           ft_strlcat(buf1, "", sizeof(buf1)) == strlcat(buf2, "", sizeof(buf2)) &&
-           strcmp(buf1, buf2) == 0; 
+        ({ strcpy(buf3, "test"); strcpy(buf4, "test"); 
+           ft_strlcat(buf3, "", sizeof(buf3)) == strlcat(buf4, "", sizeof(buf4)) &&
+           strcmp(buf3, buf4) == 0; 
         }),
-        ({ strcpy(buf1, ""); strcpy(buf2, ""); 
-           ft_strlcat(buf1, "data", sizeof(buf1)) == strlcat(buf2, "data", sizeof(buf2)) &&
-           strcmp(buf1, buf2) == 0; 
+        ({ strcpy(buf3, ""); strcpy(buf4, ""); 
+           ft_strlcat(buf3, "data", sizeof(buf3)) == strlcat(buf4, "data", sizeof(buf4)) &&
+           strcmp(buf3, buf4) == 0; 
         })
     };
     printf("ft_strlcat: \t%s\n", check_all(results17, sizeof(results17) / sizeof(results17[0])));

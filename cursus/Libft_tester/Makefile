@@ -1,9 +1,19 @@
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-CWD = cd ../Libft/
+ORIG_DIR ?= ../Libft
+LIB_NAME = libft.a
 
-all:
-	$(CWD) && make re
+all: $(LIB_NAME)
 
-.PHONY: all
+$(LIB_NAME):
+	$(MAKE) -C $(ORIG_DIR) all
+	cp $(ORIG_DIR)/$(LIB_NAME) ./
+
+clean:
+	$(MAKE) -C $(ORIG_DIR) clean
+
+fclean: clean
+	rm -f $(LIB_NAME)
+	$(MAKE) -C $(ORIG_DIR) fclean
+
+re: fclean all
+
+.PHONY: all clean fclean re
