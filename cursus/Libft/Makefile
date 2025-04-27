@@ -2,8 +2,9 @@ NAME = libft.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar rcs
-OBJ_DIR = objs 
+AR = ar
+ARFLAGS = rcs
+OBJ_DIR = objs
 
 FILES = isalpha \
 		isdigit \
@@ -43,25 +44,25 @@ FILES = isalpha \
 SRCS = $(addprefix ./ft_, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(FILES)))
 
+all: $(OBJ_DIR) $(NAME)
+
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+
 ./objs/%.o: ./%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJ_DIR):
 	mkdir -p $@
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-
-all: $(OBJ_DIR) $(NAME)
-
 clean:
-	$(RM) -rf objs
+	rm -rf objs
 
 fclean: clean
 	rm -f $(NAME)
 
-work: all clean
-
 re: clean all
 
-.PHONY: all clean fclean re
+work: all clean
+
+.PHONY: all clean fclean re work bonus
