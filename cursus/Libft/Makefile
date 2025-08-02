@@ -34,6 +34,7 @@ FILES = isalpha \
 		strtrim \
 		split \
 		itoa \
+		utoa \
 		strmapi \
 		striteri \
 		putchar_fd \

@@ -2,3 +2,5 @@
 objs/
 debugfile
 **.a
+**.o
+utils_dir/
