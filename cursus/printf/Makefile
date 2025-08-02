@@ -16,18 +16,21 @@ FILES = printf \
 
 OBJS = $(addprefix ./$(UTILS_DIR)/ft_, $(addsuffix .o, $(FILES)))
 
-all: $(UTILS_DIR) $(DEPENDENCIES) $(NAME) 
+all: $(DEPENDENCIES) $(NAME) 
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 ./$(UTILS_DIR)/%.o: ./%.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $< -I $(UTILS_DIR)
+
+test: all
+	$(CC) $(CFLAGS) test_printf.c libftprintf.a utils_dir/libft.a -I $(UTILS_DIR)
 
 $(UTILS_DIR):
 	mkdir -p $@
 
-$(DEPENDENCIES): $(UTILS_DIR) 
+$(DEPENDENCIES):
 	cd $(UTILS_DIR) && git clone --depth=1 -n https://github.com/Timasostima/42.git && cd 42 && git sparse-checkout set cursus/Libft && git checkout 
 	make -C $(UTILS_DIR)/42/cursus/Libft work
 	cp $(UTILS_DIR)/42/cursus/Libft/libft.a $(UTILS_DIR)/42/cursus/Libft/libft.h $(UTILS_DIR)
