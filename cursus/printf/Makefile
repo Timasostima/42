@@ -9,6 +9,10 @@ UTILS_DIR = utils_dir
 DEPENDENCIES = $(UTILS_DIR)/libft.a
 
 FILES = printf \
+	printf_char \
+	printf_ptr \
+	printf_int \
+	printf_hex \
 
 OBJS = $(addprefix ./$(UTILS_DIR)/ft_, $(addsuffix .o, $(FILES)))
 

@@ -3,4 +3,5 @@ objs/
 debugfile
 **.a
 **.o
+**.out
 utils_dir/
