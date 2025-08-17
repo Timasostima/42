@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tkulivar <tkulivar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/03 05:01:27 by tkulivar          #+#    #+#             */
+/*   Updated: 2025/08/03 05:01:29 by tkulivar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -8,18 +20,18 @@
 # include <stdlib.h>
 # include "libft.h"
 
-int ft_printf(const char *format, ...);
-int ft_handle_format(char c, va_list args);
+int	ft_printf(const char *format, ...);
+int	ft_handle_format(char c, va_list args);
 
-int ft_print_char(char c);
-int ft_print_str(char *s);
-int ft_print_percent(void);
+int	ft_print_char(char c);
+int	ft_print_str(char *s);
+int	ft_print_percent(void);
 
-int ft_print_int(int n);
-int ft_print_unsigned(unsigned int n);
+int	ft_print_int(int n);
+int	ft_print_unsigned(unsigned int n);
 
-int ft_print_hex(unsigned long long n, int uppercase);
+int	ft_print_hex(unsigned long long n, int uppercase);
 
-int ft_print_ptr(void *ptr);
+int	ft_print_ptr(void *ptr);
 
 #endif
