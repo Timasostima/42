@@ -8,23 +8,23 @@ int main(void)
     
     printf("=== Testing ft_printf ===\n\n");
     
-    // // Test character
-    // printf("Testing %%c:\n");
-    // ft_result = ft_printf("ft_printf: %c\n", 'A');
-    // printf_result = printf("printf:    %c\n", 'A');
-    // printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
+    // Test character
+    printf("Testing %%c:\n");
+    ft_result = ft_printf("ft_printf: %c\n", 'A');
+    printf_result = printf("printf:    %c\n", 'A');
+    printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
     
-    // // Test string
-    // printf("Testing %%s:\n");
-    // ft_result = ft_printf("ft_printf: %s\n", "Hello World");
-    // printf_result = printf("printf:    %s\n", "Hello World");
-    // printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
+    // Test string
+    printf("Testing %%s:\n");
+    ft_result = ft_printf("ft_printf: %s\n", "Hello World");
+    printf_result = printf("printf:    %s\n", "Hello World");
+    printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
     
-    // // Test NULL string
-    // printf("Testing %%s with NULL:\n");
-    // ft_result = ft_printf("ft_printf: %s\n", NULL);
-    // printf_result = printf("printf:    %s\n", "(null)");
-    // printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
+    // Test NULL string
+    printf("Testing %%s with NULL:\n");
+    ft_result = ft_printf("ft_printf: %s\n", NULL);
+    printf_result = printf("printf:    %s\n", "(null)");
+    printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
     
     // Test integer
     printf("Testing %%i:\n");
@@ -32,23 +32,18 @@ int main(void)
     printf_result = printf("printf:    %d\n", 42);
     printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
 
-    // Test integer
-    printf("Testing %%d:\n");
-    ft_result = ft_printf("ft_printf: %d\n", 42.2);
-    printf_result = printf("printf:    %d\n", 42.2);
+    
+    // Test negative integer
+    printf("Testing %%d with negative:\n");
+    ft_result = ft_printf("ft_printf: %d\n", -42);
+    printf_result = printf("printf:    %d\n", -42);
     printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
     
-    // // Test negative integer
-    // printf("Testing %%d with negative:\n");
-    // ft_result = ft_printf("ft_printf: %d\n", -42);
-    // printf_result = printf("printf:    %d\n", -42);
-    // printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
-    
-    // // Test unsigned
-    // printf("Testing %%u:\n");
-    // ft_result = ft_printf("ft_printf: %u\n", 42u);
-    // printf_result = printf("printf:    %u\n", 42u);
-    // printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
+    // Test unsigned
+    printf("Testing %%u:\n");
+    ft_result = ft_printf("ft_printf: %u\n", 42u);
+    printf_result = printf("printf:    %u\n", 42u);
+    printf("ft_printf returned: %d, printf returned: %d\n\n", ft_result, printf_result);
     
     // Test hex lowercase
     printf("Testing %%x:\n");

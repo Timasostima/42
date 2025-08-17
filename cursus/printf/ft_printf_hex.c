@@ -31,8 +31,8 @@ static char	*ft_itoa_base(unsigned long long n,
 	char	*str;
 
 	str = ft_calloc(len + 1, sizeof(char));
-    if (!str)
-        return (NULL);
+	if (!str)
+		return (NULL);
 	len--;
 	while (n > 0)
 	{
@@ -60,8 +60,8 @@ int	ft_print_hex(unsigned long long n, int uppercase)
 	}
 	len = ft_get_base_len(n, 16);
 	result = ft_itoa_base(n, 16, len, hex_digits);
-    if (!result)
-        return (0);
+	if (!result)
+		return (0);
 	ft_putstr_fd(result, FILE_DESC);
 	free(result);
 	return (len);
