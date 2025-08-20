@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
+/*   By: tkulivar <tkulivar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-15 21:21:30 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-08-15 21:21:30 by tkulivar         ###   ########.fr       */
+/*   Created: 2025/08/15 21:21:30 by tkulivar          #+#    #+#             */
+/*   Updated: 2025/08/19 21:25:54 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ char	*ft_strjoin_end(char const *s1, char const *s2, int index)
 
 	if (!s1 && !s2)
 		return (ft_strdup_end("", 0));
-	else if (!s1)
+	if (!s1)
 		return (ft_strdup_end(s2, index));
-	else if (!s2)
+	if (!s2)
 		return (ft_strdup_end(s1, 0));
 	size_s1 = ft_strlen(s1);
 	size_s2 = ft_strlen(s2);
@@ -62,31 +62,34 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 
-char	*read_file(int fd){
-	int   bytes_read;
-	char  *cup_buffer;
-	
+char	*read_file(int fd)
+{
+	int		bytes_read;
+	char	*cup_buffer;
+
 	cup_buffer = ft_calloc (BUFFER_SIZE + 1, sizeof(char));
 	if (cup_buffer == NULL)
 		return (NULL);
 	bytes_read = read(fd, cup_buffer, BUFFER_SIZE);
-	if (bytes_read <= 0)
-		return (free (cup_buffer), NULL);
+	if (bytes_read <= 0){
+		free (cup_buffer);
+		return (NULL);
+	}
 	return (cup_buffer);
 }
 
 char	*check_endline(char **line, char **buff)
 {
 	char	*result_line;
-	char	*separator;
+	char	*del;
 
-	separator = ft_strchr(*buff, '\n');
-	if (separator != NULL)
+	del = ft_strchr(*buff, '\n');
+	if (del != NULL)
 	{
-		result_line = ft_strjoin_end(*line, *buff, (int)(separator - *buff) + 1);
+		result_line = ft_strjoin_end(*line, *buff, (int)(del - *buff) + 1);
 		if (*line)
 			free(*line);
-		*line = ft_substr(*buff, (int)(separator - *buff) + 1, ft_strlen(*buff));
+		*line = ft_substr(*buff, (int)(del - *buff) + 1, ft_strlen(*buff));
 		free(*buff);
 		return (result_line);
 	}

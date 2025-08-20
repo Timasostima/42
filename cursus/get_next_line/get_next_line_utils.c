@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
+/*   By: tkulivar <tkulivar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-15 21:22:50 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-08-15 21:22:50 by tkulivar         ###   ########.fr       */
+/*   Created: 2025/08/15 21:22:50 by tkulivar          #+#    #+#             */
+/*   Updated: 2025/08/19 21:31:06 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
@@ -66,7 +65,7 @@ void	*ft_calloc(size_t elementCount, size_t elementSize)
 	char	*str;
 	size_t	i;
 	size_t	size;
-	
+
 	size = elementSize * elementCount;
 	res = malloc(size);
 	if (!res)
