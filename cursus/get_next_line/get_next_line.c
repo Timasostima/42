@@ -15,7 +15,6 @@
 char	*ft_strjoin_end(char const *s1, char const *s2, int index)
 {
 	int		size_s1;
-	int		size_s2;
 	char	*res;
 
 	if (!s1 && !s2)
@@ -25,12 +24,11 @@ char	*ft_strjoin_end(char const *s1, char const *s2, int index)
 	if (!s2)
 		return (ft_strdup_end(s1, 0));
 	size_s1 = ft_strlen(s1);
-	size_s2 = ft_strlen(s2);
-	res = ft_calloc(size_s1 + size_s2 + 1 - (size_s2 - index), sizeof(char));
+	res = ft_calloc(size_s1 + index + 1, sizeof(char));
 	if (!res)
 		return (NULL);
 	ft_strlcpy(res, s1, size_s1 + 1);
-	ft_strlcpy(&res[size_s1], s2, size_s2 + 1 - (size_s2 - index));
+	ft_strlcpy(&res[size_s1], s2, index + 1 );
 	return (res);
 }
 
@@ -65,17 +63,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 char	*read_file(int fd)
 {
 	int		bytes_read;
-	char	*cup_buffer;
+	char	*buffer;
 
-	cup_buffer = ft_calloc (BUFFER_SIZE + 1, sizeof(char));
-	if (cup_buffer == NULL)
+	buffer = ft_calloc (BUFFER_SIZE + 1, sizeof(char));
+	if (buffer == NULL)
 		return (NULL);
-	bytes_read = read(fd, cup_buffer, BUFFER_SIZE);
-	if (bytes_read <= 0){
-		free (cup_buffer);
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	if (bytes_read <= 0)
+	{
+		free (buffer);
 		return (NULL);
 	}
-	return (cup_buffer);
+	return (buffer);
 }
 
 char	*check_endline(char **line, char **buff)
