@@ -16,6 +16,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 
+	if (!src || !dst)
+		return (0);
 	i = 0;
 	while (i + 1 < size && src[i])
 	{
@@ -27,16 +29,15 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	return (ft_strlen((char *)src));
 }
 
-char	*ft_strdup_end(const char *s, int index)
+char	*ft_strdup(const char *s)
 {
 	char	*res;
 	int		size;
 
-	if (index != 0)
-		size = ft_strlen(s) + 1 - (ft_strlen(s) - index);
-	else
-		size = ft_strlen(s) + 1;
-	res = ft_calloc(size, 1);
+	if (!s)
+		return (NULL);
+	size = ft_strlen(s) + 1;
+	res = malloc(size);
 	if (!res)
 		return (NULL);
 	ft_strlcpy(res, s, size);
@@ -47,6 +48,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
 	while (s[i])
 	{
@@ -59,31 +62,12 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
-{
-	char	*res;
-	char	*str;
-	size_t	i;
-	size_t	size;
-
-	size = elementSize * elementCount;
-	res = malloc(size);
-	if (!res)
-		return (NULL);
-	str = (char *)res;
-	i = 0;
-	while (i < size)
-	{
-		str[i] = '\0';
-		i++;
-	}
-	return (res);
-}
-
 size_t	ft_strlen(const char *s)
 {
 	int	len;
 
+	if (!s)
+		return (0);
 	len = 0;
 	while (s[len])
 		len++;
