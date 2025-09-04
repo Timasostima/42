@@ -23,15 +23,16 @@
 #  define BUFFER_SIZE 42
 # endif
 
-int		read_file(int fd, char **line);
 char	*extract_line(char **line, char *del);
-char	*handle_newline_found(char **line, char *buff, char *separator);
+int		read_file(int fd, char **line);
+char	*manage_line(char **line);
+char	*free_read(int read_result, char **line, char **result_line);
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *s);
-void	ft_bzero(void *s, size_t n);
-char	*ft_strchr(const char *string, int searchedChar);
+
 char	*strjoin_and_update(char **line, char *buffer);
-char	*ft_strdup(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
+char	*ft_strdup(const char *s);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
 
 #endif

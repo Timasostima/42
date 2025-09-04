@@ -12,6 +12,30 @@
 
 #include "get_next_line.h"
 
+char	*strjoin_and_update(char **line, char *buffer)
+{
+	int		size_s1;
+	int		size_s2;
+	char	*temp;
+
+	if (!*line && !buffer)
+		return (NULL);
+	if (!*line)
+		return (*line = ft_strdup(buffer));
+	if (!buffer)
+		return (*line);
+	size_s1 = ft_strlen(*line);
+	size_s2 = ft_strlen(buffer);
+	temp = malloc(size_s1 + size_s2 + 1);
+	if (!temp)
+		return (NULL);
+	ft_strlcpy(temp, *line, size_s1 + 1);
+	ft_strlcpy(&temp[size_s1], buffer, size_s2 + 1);
+	if (*line)
+		free(*line);
+	return (*line = temp);
+}
+
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;

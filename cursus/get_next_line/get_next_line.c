@@ -28,40 +28,12 @@ char	*extract_line(char **line, char *del)
 	{
 		new_line = malloc(len + 1);
 		if (!new_line)
-			return (NULL);
+			return (free(result_line), NULL);
 		ft_strlcpy(new_line, del + 1, len + 1);
 	}
 	free(*line);
 	*line = new_line;
 	return (result_line);
-}
-
-char	*strjoin_and_update(char **line, char *buffer)
-{
-	int		size_s1;
-	int		size_s2;
-	char	*temp;
-
-	if (!*line && !buffer)
-		return (NULL);
-	if (!*line)
-	{
-		*line = ft_strdup(buffer);
-		return (*line);
-	}
-	if (!buffer)
-		return (*line);
-	size_s1 = ft_strlen(*line);
-	size_s2 = ft_strlen(buffer);
-	temp = malloc(size_s1 + size_s2 + 1);
-	if (!temp)
-		return (NULL);
-	ft_strlcpy(temp, *line, size_s1 + 1);
-	ft_strlcpy(&temp[size_s1], buffer, size_s2 + 1);
-	if (*line)
-		free(*line);
-	*line = temp;
-	return (*line);
 }
 
 int	read_file(int fd, char **line)
@@ -70,7 +42,7 @@ int	read_file(int fd, char **line)
 	char	*buffer;
 
 	buffer = malloc(BUFFER_SIZE + 1);
-	if (buffer == NULL)
+	if (!buffer)
 		return (-1);
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read > 0)
@@ -106,6 +78,23 @@ char	*manage_line(char **line)
 	return (NULL);
 }
 
+char	*free_read(int read_result, char **line, char **result_line)
+{
+	if (read_result == -1 && *line)
+	{
+		free(*line);
+		*line = NULL;
+	}
+	if (read_result == 0 && *line && **line)
+	{
+		*result_line = ft_strdup(*line);
+		free(*line);
+		*line = NULL;
+		return (*result_line);
+	}
+	return (NULL);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*line;
@@ -120,17 +109,8 @@ char	*get_next_line(int fd)
 		if (result_line)
 			return (result_line);
 		read_result = read_file(fd, &line);
-		if (read_result <= 0)
-		{
-			if (line && *line)
-			{
-				result_line = ft_strdup(line);
-				free(line);
-				line = NULL;
-				return (result_line);
-			}
-			return (NULL);
-		}
+		if (read_result < 1)
+			return (free_read(read_result, &line, &result_line));
 	}
 }
 
