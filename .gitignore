@@ -5,3 +5,5 @@ debugfile
 **.o
 **.out
 utils_dir/
+
+includes/
