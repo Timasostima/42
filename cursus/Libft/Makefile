@@ -1,56 +1,81 @@
 NAME = libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I.
 AR = ar
 ARFLAGS = rcs
 OBJ_DIR = objs
 
-FILES = isalpha \
-		isdigit \
-		isalnum \
-		isascii \
-		isprint \
-		strlen \
-		memset \
-		bzero \
-		memcpy \
-		memmove \
-		strlcpy \
-		strlcat \
-		toupper \
-		tolower \
-		strchr \
-		strrchr \
-		strncmp \
-		memchr \
-		memcmp \
-		strnstr \
-		atoi \
-		calloc \
-		strdup \
-		substr \
-		strjoin \
-		strtrim \
-		split \
-		itoa \
-		utoa \
-		strmapi \
-		striteri \
-		putchar_fd \
-		putstr_fd \
-		putendl_fd \
-		putnbr_fd \
+# Character checking and conversion functions
+CHAR_FILES = isalpha isdigit isalnum isascii isprint toupper tolower
+CHAR_SRCS = $(addprefix ./char_checks/ft_, $(addsuffix .c, $(CHAR_FILES)))
+CHAR_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(CHAR_FILES)))
 
-SRCS = $(addprefix ./ft_, $(addsuffix .c, $(FILES)))
-OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(FILES)))
+# String manipulation functions
+STRING_FILES = strlen strchr strrchr strncmp strnstr strlcpy strlcat strdup substr strjoin strtrim split strmapi striteri
+STRING_SRCS = $(addprefix ./string/ft_, $(addsuffix .c, $(STRING_FILES)))
+STRING_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(STRING_FILES)))
+
+# Memory manipulation functions
+MEMORY_FILES = memset bzero memcpy memmove memchr memcmp calloc
+MEMORY_SRCS = $(addprefix ./memory/ft_, $(addsuffix .c, $(MEMORY_FILES)))
+MEMORY_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(MEMORY_FILES)))
+
+# Output functions
+OUTPUT_FILES = putchar_fd putstr_fd putendl_fd putnbr_fd
+OUTPUT_SRCS = $(addprefix ./output/ft_, $(addsuffix .c, $(OUTPUT_FILES)))
+OUTPUT_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(OUTPUT_FILES)))
+
+# Conversion functions
+CONVERSION_FILES = atoi itoa utoa
+CONVERSION_SRCS = $(addprefix ./conversion/ft_, $(addsuffix .c, $(CONVERSION_FILES)))
+CONVERSION_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(CONVERSION_FILES)))
+
+# Printf functions
+PRINTF_FILES = printf printf_char printf_hex printf_int printf_ptr
+PRINTF_SRCS = $(addprefix ./printf/ft_, $(addsuffix .c, $(PRINTF_FILES)))
+PRINTF_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(PRINTF_FILES)))
+
+# List functions
+LIST_FILES = lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
+LIST_SRCS = $(addprefix ./lists/ft_, $(addsuffix .c, $(LIST_FILES)))
+LIST_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(LIST_FILES)))
+
+# Combine all sources and objects
+SRCS = $(CHAR_SRCS) $(STRING_SRCS) $(MEMORY_SRCS) $(OUTPUT_SRCS) $(CONVERSION_SRCS) $(PRINTF_SRCS) $(LIST_SRCS)
+OBJS = $(CHAR_OBJS) $(STRING_OBJS) $(MEMORY_OBJS) $(OUTPUT_OBJS) $(CONVERSION_OBJS) $(PRINTF_OBJS) $(LIST_OBJS)
 
 all: $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-./objs/%.o: ./%.c
+# Character functions
+./objs/ft_%.o: ./char_checks/ft_%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# String functions
+./objs/ft_%.o: ./string/ft_%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Memory functions
+./objs/ft_%.o: ./memory/ft_%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Output functions
+./objs/ft_%.o: ./output/ft_%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Conversion functions
+./objs/ft_%.o: ./conversion/ft_%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Printf functions
+./objs/ft_%.o: ./printf/ft_%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# List functions
+./objs/ft_%.o: ./lists/ft_%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJ_DIR):
@@ -66,4 +91,4 @@ re: clean all
 
 work: all clean
 
-.PHONY: all clean fclean re work bonus
+.PHONY: all clean fclean re work
