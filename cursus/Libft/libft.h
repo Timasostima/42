@@ -41,6 +41,7 @@ int		ft_tolower(int c);
 /*                          STRING MANIPULATION                               */
 /* ************************************************************************** */
 size_t	ft_strlen(const char *str);
+void	ft_free_split(char **split_arr);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -70,6 +71,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 /*                          TYPE CONVERSION                                   */
 /* ************************************************************************** */
 int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
 char	*ft_itoa(int n);
 char	*ft_utoa(unsigned int n);
 
