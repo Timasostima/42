@@ -69,21 +69,6 @@ static char	*ft_next_substr(char const *s, char c, int seg_i)
 	return (NULL);
 }
 
-static void	ft_free_split(char **split_arr)
-{
-	int	i;
-
-	i = 0;
-	while (split_arr[i])
-	{
-		free(split_arr[i]);
-		split_arr[i] = NULL;
-		i++;
-	}
-	free(split_arr);
-	split_arr = NULL;
-}
-
 char	**ft_split(char const *s, char c)
 {
 	char	**res;
