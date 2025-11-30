@@ -7,3 +7,6 @@ debugfile
 utils_dir/
 
 includes/
+
+**/push_swap/*.txt
+checker_linux
