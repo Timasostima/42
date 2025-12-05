@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft_memory.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-10 21:22:02 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-10 21:22:02 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-12-05 21:28:27 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-12-05 21:28:27 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFT_MEMORY_H
+# define LIBFT_MEMORY_H
 
-# include "arrays/libft_arrays.h"
-# include "char/libft_char.h"
-# include "checks/libft_checks.h"
-# include "conversion/libft_conversion.h"
-# include "lists/libft_lists.h"
-# include "memory/libft_memory.h"
-# include "output/libft_output.h"
-# include "printf/libft_printf.h"
-# include "string/libft_string.h"
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+# include "../libft.h"
 
 /* ************************************************************************** */
-/*                          LINKED LIST STRUCTURE                             */
+/*                          MEMORY MANIPULATION                               */
 /* ************************************************************************** */
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+void	*ft_memset(void *s, int c, size_t n);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	*ft_memmove(void *dest, const void *src, size_t n);
+void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

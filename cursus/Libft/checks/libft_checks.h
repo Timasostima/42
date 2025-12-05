@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft_checks.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-10 21:22:02 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-10 21:22:02 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-12-05 21:27:48 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-12-05 21:27:48 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFT_CHECKS_H
+# define LIBFT_CHECKS_H
 
-# include "arrays/libft_arrays.h"
-# include "char/libft_char.h"
-# include "checks/libft_checks.h"
-# include "conversion/libft_conversion.h"
-# include "lists/libft_lists.h"
-# include "memory/libft_memory.h"
-# include "output/libft_output.h"
-# include "printf/libft_printf.h"
-# include "string/libft_string.h"
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+# include "../libft.h"
 
 /* ************************************************************************** */
-/*                          LINKED LIST STRUCTURE                             */
+/*                          CHECK FUNCTIONS                                   */
 /* ************************************************************************** */
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_isspace(int c);
+int		ft_isupper(int c);
+int		ft_islower(int c);
+int		ft_isint(const char *str);
+int		ft_isfloat(const char *str);
 
 #endif

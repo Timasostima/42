@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft_conversion.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-10 21:22:02 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-10 21:22:02 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-12-05 21:28:17 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-12-05 21:28:17 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFT_CONVERSION_H
+# define LIBFT_CONVERSION_H
 
-# include "arrays/libft_arrays.h"
-# include "char/libft_char.h"
-# include "checks/libft_checks.h"
-# include "conversion/libft_conversion.h"
-# include "lists/libft_lists.h"
-# include "memory/libft_memory.h"
-# include "output/libft_output.h"
-# include "printf/libft_printf.h"
-# include "string/libft_string.h"
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+# include "../libft.h"
 
 /* ************************************************************************** */
-/*                          LINKED LIST STRUCTURE                             */
+/*                          TYPE CONVERSION                                   */
 /* ************************************************************************** */
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+int		ft_atoi(const char *nptr);
+long	ft_atol(const char *nptr);
+double	ft_atof(const char *str);
+char	*ft_itoa(int n);
+char	*ft_utoa(unsigned int n);
 
 #endif

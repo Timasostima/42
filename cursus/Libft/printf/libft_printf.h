@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft_printf.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-10 21:22:02 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-04-10 21:22:02 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-12-05 21:28:47 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-12-05 21:28:47 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIBFT_PRINTF_H
+# define LIBFT_PRINTF_H
 
-# include "arrays/libft_arrays.h"
-# include "char/libft_char.h"
-# include "checks/libft_checks.h"
-# include "conversion/libft_conversion.h"
-# include "lists/libft_lists.h"
-# include "memory/libft_memory.h"
-# include "output/libft_output.h"
-# include "printf/libft_printf.h"
-# include "string/libft_string.h"
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+# include "../libft.h"
 
 /* ************************************************************************** */
-/*                          LINKED LIST STRUCTURE                             */
+/*                                Prinf                                       */
 /* ************************************************************************** */
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+int		ft_printf(const char *format, ...);
+int		ft_handle_format(char c, va_list args);
+int		ft_print_char(char c);
+int		ft_print_str(char *s);
+int		ft_print_percent(void);
+int		ft_print_int(int n);
+int		ft_print_unsigned(unsigned int n);
+int		ft_print_hex(unsigned long long n, int uppercase);
+int		ft_print_ptr(void *ptr);
 
 #endif
