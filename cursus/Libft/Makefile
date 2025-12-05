@@ -12,7 +12,7 @@ CHAR_SRCS = $(addprefix ./char_checks/ft_, $(addsuffix .c, $(CHAR_FILES)))
 CHAR_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(CHAR_FILES)))
 
 # String manipulation functions
-STRING_FILES = strlen strchr strrchr strncmp strnstr strlcpy strlcat strdup substr strjoin strtrim split free_split strmapi striteri
+STRING_FILES = strlen strchr strrchr strncmp strcmp strnstr strlcpy strlcat strdup substr strjoin strtrim split free_split strmapi striteri
 STRING_SRCS = $(addprefix ./string/ft_, $(addsuffix .c, $(STRING_FILES)))
 STRING_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(STRING_FILES)))
 
@@ -27,7 +27,7 @@ OUTPUT_SRCS = $(addprefix ./output/ft_, $(addsuffix .c, $(OUTPUT_FILES)))
 OUTPUT_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(OUTPUT_FILES)))
 
 # Conversion functions
-CONVERSION_FILES = atoi atol itoa utoa
+CONVERSION_FILES = atoi atol atof itoa utoa
 CONVERSION_SRCS = $(addprefix ./conversion/ft_, $(addsuffix .c, $(CONVERSION_FILES)))
 CONVERSION_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(CONVERSION_FILES)))
 

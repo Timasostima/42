@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkulivar <tkulivar@student.42madrid.com>   #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-11-30 15:26:32 by tkulivar          #+#    #+#             */
-/*   Updated: 2025-11-30 15:26:32 by tkulivar         ###   ########.fr       */
+/*   Created: 2025-12-05 19:19:12 by tkulivar          #+#    #+#             */
+/*   Updated: 2025-12-05 19:19:12 by tkulivar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-
-long	ft_atol(const char *nptr)
+int	ft_strcmp(char *s1, char *s2)
 {
-	int		i;
-	long	res;
-	int		flag;
+	int	i;
+	int	temp;
 
 	i = 0;
-	while (nptr[i] == '\t' || nptr[i] == '\n' || nptr[i] == '\r'
-		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == ' ')
-		i++;
-	flag = 1;
-	if (nptr[i] == '-')
-		flag *= -1;
-	if (nptr[i] == '+' || nptr[i] == '-')
-		i++;
-	res = 0;
-	while (ft_isdigit(nptr[i]))
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-		res = res * 10 + nptr[i] - '0';
+		temp = (unsigned char)s1[i] - (unsigned char)s2[i];
+		if (temp != 0)
+			return (temp);
 		i++;
 	}
-	return (res * flag);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
