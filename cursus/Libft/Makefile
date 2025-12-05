@@ -6,10 +6,15 @@ AR = ar
 ARFLAGS = rcs
 OBJ_DIR = objs
 
-# Character checking and conversion functions
-CHAR_FILES = isalpha isdigit isalnum isascii isprint toupper tolower
-CHAR_SRCS = $(addprefix ./char_checks/ft_, $(addsuffix .c, $(CHAR_FILES)))
+# Character conversion functions
+CHAR_FILES = toupper tolower
+CHAR_SRCS = $(addprefix ./char/ft_, $(addsuffix .c, $(CHAR_FILES)))
 CHAR_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(CHAR_FILES)))
+
+# Check functions
+CHECK_FILES = isalpha isdigit isalnum isascii isprint isspace isupper islower isint isfloat
+CHECK_SRCS = $(addprefix ./checks/ft_, $(addsuffix .c, $(CHECK_FILES)))
+CHECK_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(CHECK_FILES)))
 
 # String manipulation functions
 STRING_FILES = strlen strchr strrchr strncmp strcmp strnstr strlcpy strlcat strdup substr strjoin strtrim split free_split strmapi striteri
@@ -42,8 +47,8 @@ LIST_SRCS = $(addprefix ./lists/ft_, $(addsuffix .c, $(LIST_FILES)))
 LIST_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(LIST_FILES)))
 
 # Combine all sources and objects
-SRCS = $(CHAR_SRCS) $(STRING_SRCS) $(MEMORY_SRCS) $(OUTPUT_SRCS) $(CONVERSION_SRCS) $(PRINTF_SRCS) $(LIST_SRCS)
-OBJS = $(CHAR_OBJS) $(STRING_OBJS) $(MEMORY_OBJS) $(OUTPUT_OBJS) $(CONVERSION_OBJS) $(PRINTF_OBJS) $(LIST_OBJS)
+SRCS = $(CHAR_SRCS) $(CHECK_SRCS) $(STRING_SRCS) $(MEMORY_SRCS) $(OUTPUT_SRCS) $(CONVERSION_SRCS) $(PRINTF_SRCS) $(LIST_SRCS)
+OBJS = $(CHAR_OBJS) $(CHECK_OBJS) $(STRING_OBJS) $(MEMORY_OBJS) $(OUTPUT_OBJS) $(CONVERSION_OBJS) $(PRINTF_OBJS) $(LIST_OBJS)
 
 all: $(OBJ_DIR) $(NAME)
 
@@ -51,7 +56,11 @@ $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 # Character functions
-./objs/ft_%.o: ./char_checks/ft_%.c
+./objs/ft_%.o: ./char/ft_%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Check functions
+./objs/ft_%.o: ./checks/ft_%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 # String functions

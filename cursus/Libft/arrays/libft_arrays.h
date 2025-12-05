@@ -13,7 +13,7 @@
 #ifndef LIBFT_ARRAYS_H
 # define LIBFT_ARRAYS_H
 
-# include "../libft.h"
+# include <stddef.h>
 
 /* ************************************************************************** */
 /*                          ARRAY FUNCTIONS                                   */

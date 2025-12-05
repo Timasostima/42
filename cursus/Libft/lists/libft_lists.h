@@ -13,7 +13,14 @@
 #ifndef LIBFT_LISTS_H
 # define LIBFT_LISTS_H
 
-# include "../libft.h"
+/* ************************************************************************** */
+/*                          LINKED LIST STRUCTURE                             */
+/* ************************************************************************** */
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
 
 /* ************************************************************************** */
 /*                          LINKED LIST FUNCTIONS                             */

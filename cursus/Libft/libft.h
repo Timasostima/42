@@ -25,15 +25,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stddef.h>
 # include <stdarg.h>
-
-/* ************************************************************************** */
-/*                          LINKED LIST STRUCTURE                             */
-/* ************************************************************************** */
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
 
 #endif

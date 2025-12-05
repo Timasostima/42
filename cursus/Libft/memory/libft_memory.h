@@ -13,7 +13,7 @@
 #ifndef LIBFT_MEMORY_H
 # define LIBFT_MEMORY_H
 
-# include "../libft.h"
+# include <stddef.h>
 
 /* ************************************************************************** */
 /*                          MEMORY MANIPULATION                               */

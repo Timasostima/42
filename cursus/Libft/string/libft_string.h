@@ -13,7 +13,7 @@
 #ifndef LIBFT_STRING_H
 # define LIBFT_STRING_H
 
-# include "../libft.h"
+# include <stddef.h>
 
 /* ************************************************************************** */
 /*                          STRING MANIPULATION                               */
