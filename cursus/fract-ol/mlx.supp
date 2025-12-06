@@ -1,0 +1,65 @@
+{
+   <mlx_glfw_leak_1>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   ...
+   fun:glfwCreateWindow
+   fun:mlx_init
+}
+
+{
+   <mlx_glfw_leak_2>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   ...
+   fun:glfwCreateWindow
+   fun:mlx_init
+}
+
+{
+   <mlx_glfw_leak_3>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   ...
+   fun:glfwInit
+   fun:mlx_init
+}
+
+{
+   <mlx_glfw_leak_4>
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   ...
+   fun:glfwInit
+   fun:mlx_init
+}
+
+{
+   <mlx_glfw_indirect>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   ...
+   fun:glfwCreateWindow
+}
+
+{
+   <mlx_glfw_indirect_2>
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   ...
+   fun:glfwInit
+}
+
+{
+   <graphics_driver_leak>
+   Memcheck:Leak
+   match-leak-kinds: definite,indirect
+   fun:calloc
+   obj:*
+   obj:*
+   obj:*
+}
