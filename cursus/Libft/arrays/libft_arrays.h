@@ -18,7 +18,8 @@
 /* ************************************************************************** */
 /*                          ARRAY FUNCTIONS                                   */
 /* ************************************************************************** */
-void	ft_ariteri(void **arr, void (*f)(void *));
 size_t	ft_arsize(void **arr);
+void	ft_ariteri(void **arr, void (*f)(void *));
+char	*ft_arrmapi(void **arr, void (*f)(void *));
 
 #endif
