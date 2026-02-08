@@ -46,9 +46,14 @@ LIST_FILES = lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear 
 LIST_SRCS = $(addprefix ./lists/ft_, $(addsuffix .c, $(LIST_FILES)))
 LIST_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(LIST_FILES)))
 
+# Array functions
+ARRAYS_FILES = ariteri armapi arsize
+ARRAYS_SRCS = $(addprefix ./arrays/ft_, $(addsuffix .c, $(ARRAYS_FILES)))
+ARRAYS_OBJS = $(addprefix ./objs/ft_, $(addsuffix .o, $(ARRAYS_FILES)))
+
 # Combine all sources and objects
-SRCS = $(CHAR_SRCS) $(CHECK_SRCS) $(STRING_SRCS) $(MEMORY_SRCS) $(OUTPUT_SRCS) $(CONVERSION_SRCS) $(PRINTF_SRCS) $(LIST_SRCS)
-OBJS = $(CHAR_OBJS) $(CHECK_OBJS) $(STRING_OBJS) $(MEMORY_OBJS) $(OUTPUT_OBJS) $(CONVERSION_OBJS) $(PRINTF_OBJS) $(LIST_OBJS)
+SRCS = $(CHAR_SRCS) $(CHECK_SRCS) $(STRING_SRCS) $(MEMORY_SRCS) $(OUTPUT_SRCS) $(CONVERSION_SRCS) $(PRINTF_SRCS) $(LIST_SRCS) $(ARRAYS_SRCS)
+OBJS = $(CHAR_OBJS) $(CHECK_OBJS) $(STRING_OBJS) $(MEMORY_OBJS) $(OUTPUT_OBJS) $(CONVERSION_OBJS) $(PRINTF_OBJS) $(LIST_OBJS) $(ARRAYS_OBJS)
 
 all: $(OBJ_DIR) $(NAME)
 
@@ -85,6 +90,10 @@ $(NAME): $(OBJS)
 
 # List functions
 ./objs/ft_%.o: ./lists/ft_%.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# List functions
+./objs/ft_%.o: ./arrays/ft_%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJ_DIR):
